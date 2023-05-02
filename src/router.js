@@ -1,11 +1,13 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import authorizationPage from './components/authorizationPage.vue';
-import initialPage from './components/initialPage.vue';
+import startPage from './pages/startPage.vue';
+import signInPage from './pages/signInPage.vue';
+import signUpPage from './pages/signUpPage.vue';
 
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
-        { path: '/authorization', component: authorizationPage },
-        { path: '/', component: initialPage },
+        { path: '/', component: startPage },
+        { path: '/signin', component: signInPage },
+        { path: '/signup', component: signUpPage },
     ] 
 })

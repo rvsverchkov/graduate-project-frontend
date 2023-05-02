@@ -1,0 +1,38 @@
+.header
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    border-bottom: 1px solid grey
+    // border-image: linear-gradient(to right,#fd31e5, #53a6ff) 2
+    // border-width: 2px
+    // border-style: solid
+    // border-top: none
+    // border-left: none
+    // border-right: none
+    min-height: 80px
+    &__title
+        font-family: 'Inter'
+        font-size: 40px
+        font-weight: 200
+        color: white
+        transition: all .3s ease
+        outline: none
+        text-decoration: none
+        &:hover
+            opacity: .6
+    &__button-container
+        display: flex
+        justify-content: center
+        align-items: center
+    &__link
+        font-family: 'Inter'
+        font-size: 30px
+        font-weight: 200
+        transition: all .3s ease
+        text-decoration: none !important
+        outline: none
+        color: white
+        cursor: pointer
+        &:hover
+            opacity: .6
