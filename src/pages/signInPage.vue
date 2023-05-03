@@ -1,6 +1,6 @@
 <template>
   <div class="signin__container">
-    <p class="form__title">АВТОРИЗАЦИЯ</p>
+    <p class="signin__title">Авторизация</p>
   </div>
 </template>
 

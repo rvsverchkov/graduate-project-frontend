@@ -1,11 +1,8 @@
 <template>
     <div class="signup__container">
-        <p class="form__title">РЕГИСТРАЦИЯ</p>
-        <form action="submit">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <p>HELLO</p>
+        <p class="signup__title">Регистрация</p>
+        <form action="submit" class="form">
+            
         </form>
     </div>
 </template>

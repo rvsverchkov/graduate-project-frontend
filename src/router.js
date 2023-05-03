@@ -9,17 +9,29 @@ export default createRouter({
         {
             name: 'Start',
             path: '/', 
-            component: startPage 
+            component: startPage,
+            meta: {
+                showSignInButton: false,
+                showSignUpButton: true
+            }
         },
         {
             name: 'SignIn',
             path: '/signin', 
-            component: signInPage 
+            component: signInPage,
+            meta: {
+                showSignInButton: false,
+                showSignUpButton: true
+            }
         },
         { 
             name: 'SignUp',
             path: '/signup', 
-            component: signUpPage 
+            component: signUpPage,
+            meta: {
+                showSignInButton: true,
+                showSignUpButton: false
+            }
         },
     ] 
 })
