@@ -28,9 +28,6 @@ export default {
         return {
             data: json
         }
-    },
-    mounted() {
-        console.log(this.data[0])
     }
 }
 </script>

@@ -61,9 +61,9 @@ export default {
   methods: {
     handleLogin(user) {
       this.loading = true;
-
       this.$store.dispatch("auth/login", user).then(
         () => {
+          console.log('Токен записан в localStorage')
           console.log(localStorage)
           this.$router.push("/courses")
         },

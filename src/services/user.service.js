@@ -5,7 +5,11 @@ const API_URL = 'http://localhost:3000';
 
 class UserService {
     getUserBoard() {
-        return axios.get(API_URL + '/user', { headers: authHeader() });
+        axios.get(API_URL + '/users/me', { headers: authHeader() })
+            .then(response => {
+                console.log(response.data)
+                return response.data.name;
+            })
     }
 }
 

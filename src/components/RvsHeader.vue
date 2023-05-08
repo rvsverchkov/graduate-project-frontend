@@ -32,6 +32,8 @@ export default {
         logOut() {
             this.$store.dispatch('auth/logout');
             this.$router.push('/');
+            console.log('Вы вышли из аккаунта, токен удален');
+            console.log(localStorage);
         }
     }
 }

@@ -10,8 +10,9 @@ class AuthService {
                 name: user.name
             })
             .then(response => {
+                console.log('Присвоен токен')
+                console.log(response.data.token)
                 if (response.data.token) {
-                    console.log('123')
                     localStorage.setItem('user', JSON.stringify(response.data));
                 }
                 return response.data;
@@ -21,7 +22,6 @@ class AuthService {
         localStorage.removeItem('user');
     }
     register(user) {
-        console.log(user);
         return axios.post(API_URL + '/signup', {
             email: user.email,
             password: user.password,
