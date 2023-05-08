@@ -25,7 +25,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://localhost:3000/users/me', { headers: authHeader() })
+        axios.get('http://api.rvsverchkov-project.ru/users/me', { headers: authHeader() })
             .then(response => {
                 this.userData.name = response.data.name;
                 this.userData.about = response.data.about;

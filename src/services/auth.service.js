@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://api.rvsverchkov-project.ru';
 
 class AuthService {
     login(user) {
