@@ -1,5 +1,6 @@
 import axios from "axios";
-const API_URL = 'http://api.rvsverchkov-project.ru';
+// const API_URL = 'http://localhost:3000';
+const API_URL = 'https://rvsverchkov-backend.ru';
 
 class AuthService {
     login(user) {
@@ -27,6 +28,9 @@ class AuthService {
             password: user.password,
             name: user.name
         })
+            .then(response => {
+                console.log(response)
+            })
     }
 }
 
