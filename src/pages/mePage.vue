@@ -1,38 +1,45 @@
 <template>
     <div class="me__container">
-        <p class="me__title">Привет, {{ userData.name }}!</p>
-        <p>{{ userData.about }}</p>
-        <p>{{ userData.avatar }}</p>
-        <p>{{ userData._id }}</p>
-        <p>{{ userData.email }}</p>
+        <p class="me__title">Привет, {{ userName }}!</p>
+        <img class="me__image" :src=getUserAvatar() alt="">
+        <p>{{ userAbout }}</p>
+        <p>{{ userId }}</p>
+        <p>{{ userEmail }}</p>
+        <RouterLink to="/courses" class="me__button">Выбрать курс</RouterLink>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import authHeader from '@/services/auth-header'
+import { RouterLink } from 'vue-router';
 
 export default {
-    name: 'mePage',
+    name: "mePage",
     data() {
         return {
-            userData: new Object()
-        }
+            userName: "",
+            userAvatar: "",
+            userAbout: "",
+            userId: "",
+            userEmail: ""
+        };
     },
     methods: {
-        consolelg() {
-            console.log(this.userData)
+        getUserAvatar() {
+            return this.userAvatar;
         }
     },
     mounted() {
-        axios.get('https://rvsverchkov-backend.ru/users/me', { headers: authHeader() })
+        axios.get("https://rvsverchkov-backend.ru/users/me", { headers: authHeader() })
             .then(response => {
-                this.userData.name = response.data.name;
-                this.userData.about = response.data.about;
-                this.userData.avatar = response.data.avatar;
-                this.userData._id = response.data._id;
-                this.userData.email = response.data.email;
-            })
-    }
+            this.userName = response.data.name;
+            this.userAbout = response.data.about;
+            this.userAvatar = response.data.avatar;
+            this.userId = response.data._id;
+            this.userEmail = response.data.email;
+        });
+    },
+    components: { RouterLink }
 }
 </script>
