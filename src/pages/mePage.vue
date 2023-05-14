@@ -31,7 +31,7 @@ export default {
         }
     },
     mounted() {
-        axios.get("https://rvsverchkov-backend.ru/users/me", { headers: authHeader() })
+        axios.get("http://localhost:3000/users/me", { headers: authHeader() })
             .then(response => {
             this.userName = response.data.name;
             this.userAbout = response.data.about;

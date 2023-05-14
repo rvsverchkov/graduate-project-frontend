@@ -14,13 +14,28 @@
         color: black
         border-radius: 20px
         padding: 10px 10px 10px 10px
-        transition: all .3s ease
-        cursor: pointer
-        &:hover
-            opacity: .6
     &__link
+        position: relative
         outline: none
         text-decoration: none
+    &__button
+        outline: none
+        text-decoration: none
+        color: white
+        background-color: black
+        width: 200px
+        height: 58px
+        position: absolute
+        right: 0
+        top: 0
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 15px
+        cursor: pointer
+        transition: all .3s ease
+        &:hover
+            opacity: .6
     &__element-title
         margin-top: 0
         margin-bottom: 0
