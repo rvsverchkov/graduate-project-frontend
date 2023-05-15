@@ -4,20 +4,58 @@
         font-weight: 200
         color: white
         font-size: 25px
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
     &__title
         text-align: center
-    &__paragraph
-        font-size: 20px
+    &__button-container
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
     &__button
         margin: 0 auto
-        margin-bottom: 20px
+        margin-bottom: 30px
+        margin-top: 5px
         width: 250px
         height: 50px
         cursor: pointer
         transition: all .3s ease
         &:hover
             opacity: .6
+    &__test-title
+        text-align: center
+    &__questions
+        margin-bottom: 25px
+    &__radio-button
+        position: absolute
+        z-index: -1
+        opacity: 0
+    &__radio-button + label
+        display: inline-flex
+        align-items: center
+        user-select: none
+        cursor: pointer
+        transition: all .3s ease
+        &:hover
+            opacity: .6
+    &__radio-button + label::before
+        content: ''
+        display: inline-block
+        width: 1em
+        height: 1em
+        flex-shrink: 0
+        flex-grow: 0
+        border: 2px solid #adb5bd
+        border-radius: 20%
+        margin-right: 0.5em
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: 50% 50%
+    &__radio-button:focus + label::before
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+    &__radio-button:checked + label::before
+        border-color: #0b76ef
+        background-color: #0b76ef
+        background-image: url('../assets/img/checkmark-white.svg')
+        background-size: cover
+    &__radio-button:disabled + label::before
+        background-color: #e9ecef

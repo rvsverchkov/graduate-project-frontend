@@ -27,17 +27,22 @@
                 случае это будет уместно.
             </p>
         </div>
-        <button @click="showTests()" v-if="showTheory" class="course__button">Пройти тест</button>
+        <div class="course__button-container">
+            <button @click="showTests()" v-if="showTheory" class="course__button">Пройти тест</button>
+        </div>
         <div class="course__test" v-if="!showTheory">
-            <p class="course__title">Узнайте, как вы усвоили материал курса :)</p>
-            <div class="course__question">
-                <div class="course__title" v-for="(item, index) in this.questionsArray" :key="index">
-                    <p class="course__title">{{ item.question }}</p>
-                    <div class="course__title" v-for="(element, ind) in item.answers" :key="ind">
-                        <input :name="index" type="radio">
-                        <label :for="ind">{{ element }}</label>
+            <p class="course__test-title">Узнайте, как вы усвоили материал курса</p>
+            <div class="course__questions">
+                <div class="course__question-container" v-for="(item, index) in this.questionsArray" :key="index">
+                    <p class="">{{ item.question }}</p>
+                    <div class="" v-for="(element, ind) in item.answers" :key="ind">
+                        <input @change="getValues(index, ind)" class="course__radio-button" :id="`${index}` + `${ind}`" type="radio" :name="index">
+                        <label :for="`${index}` + `${ind}`">{{ element }}</label>
                     </div>
                 </div>
+            </div>
+            <div class="course__button-container">
+                <button @click="sendAnswers()" v-if="!showTheory" class="course__button">Проверить ответы</button>
             </div>
         </div>
     </div>
@@ -47,13 +52,14 @@
 import axios from 'axios';
 import authHeader from '@/services/auth-header';
 
-
 export default {
     name: 'courseOfficePage',
     data() {
         return {
             showTheory: true,
-            questionsArray: []
+            questionsArray: [],
+            quantityOfAnswers: 0,
+            answersArray: []
         }
     },
     methods: {
@@ -62,7 +68,29 @@ export default {
             axios.get("http://localhost:3000/tests/office", { headers: authHeader() })
                 .then(response => {
                     this.questionsArray = response.data[0].questions
+                    this.quantityOfAnswers = this.questionsArray.length
+                    for (let i = 0; i < this.quantityOfAnswers; i++) {
+                        this.answersArray.push({
+                            "answer": undefined
+                        });
+                    }
             });
+        },
+        getValues(index, newAnswer) {
+            console.log(index, newAnswer);
+            if (this.answersArray[index].answer === undefined || this.answersArray[index].answer !== newAnswer) {
+                this.answersArray[index].answer = newAnswer;
+            } else {
+                console.log('Такой ответ уже есть')
+            }
+            console.log(this.answersArray)
+        },
+        sendAnswers() {
+            let result = [];
+            for (let i = 0; i < this.answersArray.length; i++) {
+                result.push(this.answersArray[i].answer);
+            }
+            console.log(result)
         }
     },
 }
