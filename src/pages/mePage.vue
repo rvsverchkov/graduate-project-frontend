@@ -33,11 +33,11 @@ export default {
     mounted() {
         axios.get("http://localhost:3000/users/me", { headers: authHeader() })
             .then(response => {
-            this.userName = response.data.name;
-            this.userAbout = response.data.about;
-            this.userAvatar = response.data.avatar;
-            this.userId = response.data._id;
-            this.userEmail = response.data.email;
+                this.userName = response.data.name;
+                this.userAbout = response.data.about;
+                this.userAvatar = response.data.avatar;
+                this.userId = response.data._id;
+                this.userEmail = response.data.email;
         });
     },
     components: { RouterLink }

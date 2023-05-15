@@ -42,7 +42,12 @@
                 </div>
             </div>
             <div class="course__button-container">
-                <button @click="sendAnswers()" v-if="!showTheory" class="course__button">Проверить ответы</button>
+                <button @click="checkAnswers()" v-if="!showTheory" class="course__button">Проверить ответы</button>
+            </div>
+            <div class="course__results" v-if="showResults">
+                <p class="course__results-title">
+                    Вы правильно ответили на {{ quantityOfTrue }} из {{ quantityOfAnswers }} вопросов
+                </p>
             </div>
         </div>
     </div>
@@ -59,7 +64,11 @@ export default {
             showTheory: true,
             questionsArray: [],
             quantityOfAnswers: 0,
-            answersArray: []
+            answersArray: [],
+            showResults: false,
+            result: new Array(),
+            resultTrust: new Array(),
+            quantityOfTrue: 0
         }
     },
     methods: {
@@ -77,20 +86,24 @@ export default {
             });
         },
         getValues(index, newAnswer) {
-            console.log(index, newAnswer);
             if (this.answersArray[index].answer === undefined || this.answersArray[index].answer !== newAnswer) {
                 this.answersArray[index].answer = newAnswer;
-            } else {
-                console.log('Такой ответ уже есть')
             }
-            console.log(this.answersArray)
         },
-        sendAnswers() {
-            let result = [];
+        checkAnswers() {
             for (let i = 0; i < this.answersArray.length; i++) {
-                result.push(this.answersArray[i].answer);
+                this.result.push(this.answersArray[i].answer);
             }
-            console.log(result)
+            axios.get("http://localhost:3000/answers/office", { headers: authHeader() })
+                .then(response => {
+                    this.resultTrust = response.data;
+                    for (let i = 0; i < this.result.length; i++) {
+                        if (this.resultTrust[i] === this.result[i]) {
+                            this.quantityOfTrue += 1
+                        }
+                    }
+                    this.showResults = true;
+            });
         }
     },
 }
