@@ -14,6 +14,8 @@
         color: black
         border-radius: 20px
         padding: 10px 10px 10px 10px
+    &__element-hide
+        opacity: .40
     &__link
         position: relative
         outline: none
@@ -36,6 +38,45 @@
         transition: all .3s ease
         &:hover
             opacity: .6
+    &__info
+        outline: none
+        text-decoration: none
+        color: white
+        background-color: black
+        height: 58px
+        padding-left: 15px
+        padding-right: 15px
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 15px
+        cursor: pointer
+        transition: all .3s ease
+        &:hover
+            opacity: .6
+    &__result
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        position: absolute
+        top: 0
+        right: 0
+        width: auto
+        height: 60px
+    &__result-bar
+        width: 200px
+        height: 100%
+        background-color: #000000
+        border-radius: 15px
+        margin-left: 20px
+    &__result-value
+        width: 70%
+        height: 100%
+        border-top-left-radius: 15px
+        border-bottom-left-radius: 15px
+        background: rgb(255,255,255)
+        background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(197,136,249,1) 0%, rgba(249,136,136,1) 99%)
     &__element-title
         margin-top: 0
         margin-bottom: 0
