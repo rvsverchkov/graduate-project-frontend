@@ -13,12 +13,17 @@
         font-size: 40px
         margin-top: 16px
         margin-bottom: 16px
+        @media (max-width: 470px)
+            margin-bottom: 10px
+            margin-top: 10px
     &__image
         width: 200px
         height: 200px
         object-fit: cover
         border-radius: 20px
         margin-bottom: 25px
+        @media (max-width: 470px)
+            margin-bottom: 10px
     &__button
         font-weight: 300
         transition: all .3s ease
@@ -42,10 +47,47 @@
         flex-direction: row
         justify-content: flex-start
         align-items: center
+        @media (max-width: 470px)
+            flex-direction: column
     &__text-container
         display: flex
         flex-direction: column
         padding-left: 20px
         padding-bottom: 0
+        @media (max-width: 470px)
+            padding-left: 0
+            justify-content: center
+            align-items: center
     &__text
         margin-top: 0
+        @media (max-width: 470px)
+            text-align: center
+            margin-bottom: 15px
+    &__element
+        background-color: white
+        color: black
+        border-radius: 20px
+        padding: 10px 10px 10px 10px
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        @media (max-width: 615px)
+            gap: 10px
+            flex-direction: column
+    &__element-info
+        display: flex
+        flex-direction: column
+    &__progress
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+    &__result
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        width: auto
+        height: 60px
+        @media (max-width: 615px)
+            width: 100%

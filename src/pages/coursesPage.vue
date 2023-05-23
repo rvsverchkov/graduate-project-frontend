@@ -9,8 +9,8 @@
                         <img class="courses__element-svg" src="../assets/img/time.svg">
                         <p class="courses__element-time">25 минут</p>
                     </div>
-                    <RouterLink class="courses__button" to="/courses/office">Изучить</RouterLink>
                 </div>
+                <RouterLink class="courses__button" to="/courses/office">Изучить</RouterLink>
             </div>
             <div class="courses__element">
                 <div class="courses__link">
@@ -19,8 +19,8 @@
                         <img class="courses__element-svg" src="../assets/img/time.svg">
                         <p class="courses__element-time">30 минут </p>
                     </div>
-                    <RouterLink class="courses__button" to="/courses/email">Изучить</RouterLink>
                 </div>
+                <RouterLink class="courses__button" to="/courses/email">Изучить</RouterLink>
             </div>
             <div class="courses__element">
                 <div class="courses__link">
@@ -29,8 +29,8 @@
                         <img class="courses__element-svg" src="../assets/img/time.svg">
                         <p class="courses__element-time">45 минут </p>
                     </div>
-                    <RouterLink class="courses__button" to="/courses/phishing">Изучить</RouterLink>
                 </div>
+                <RouterLink class="courses__button" to="/courses/phishing">Изучить</RouterLink>
             </div>
         </div>
     </div>

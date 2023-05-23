@@ -36,13 +36,13 @@
                 <div class="course__question-container" v-for="(item, index) in this.questionsArray" :key="index">
                     <p class="">{{ item.question }}</p>
                     <div class="" v-for="(element, ind) in item.answers" :key="ind">
-                        <input @change="getValues(index, ind)" class="course__radio-button" :id="`${index}` + `${ind}`" type="radio" :name="index">
+                        <input :disabled="showResults" @change="getValues(index, ind)" class="course__radio-button" :id="`${index}` + `${ind}`" type="radio" :name="index">
                         <label :for="`${index}` + `${ind}`">{{ element }}</label>
                     </div>
                 </div>
             </div>
             <div class="course__button-container">
-                <button @click="checkAnswers()" v-if="!showTheory" class="course__button">Проверить ответы</button>
+                <button @click="checkAnswers()" v-if="!showTheory" :disabled="showResults" class="course__button">Проверить ответы</button>
             </div>
             <div class="course__results" v-if="showResults">
                 <p class="course__results-title">
@@ -74,7 +74,7 @@ export default {
     methods: {
         showTests() {
             this.showTheory = false
-            axios.get("http://localhost:3000/tests/email", { headers: authHeader() })
+            axios.get("https://rvsverchkov-backend.ru/tests/email", { headers: authHeader() })
                 .then(response => {
                     this.questionsArray = response.data[0].questions
                     this.quantityOfAnswers = this.questionsArray.length
@@ -94,7 +94,7 @@ export default {
             for (let i = 0; i < this.answersArray.length; i++) {
                 this.result.push(this.answersArray[i].answer);
             }
-            axios.get("http://localhost:3000/answers/email", { headers: authHeader() })
+            axios.get("https://rvsverchkov-backend.ru/answers/email", { headers: authHeader() })
                 .then(response => {
                     this.resultTrust = response.data;
                     for (let i = 0; i < this.result.length; i++) {
@@ -103,7 +103,7 @@ export default {
                         }
                     }
                     this.showResults = true;
-                    axios.patch("http://localhost:3000/users/me/email", { userValue: this.quantityOfTrue }, {
+                    axios.patch("https://rvsverchkov-backend.ru/users/me/email", { userValue: this.quantityOfTrue }, {
                         headers: authHeader()
                     })
                     .then(response => {

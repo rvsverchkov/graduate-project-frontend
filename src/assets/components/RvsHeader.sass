@@ -38,3 +38,31 @@
         cursor: pointer
         &:hover
             opacity: .6
+        @media (max-width: 460px)
+            font-size: 26px
+            text-align: right
+    &__exit
+        font-family: 'Inter'
+        font-size: 30px
+        margin-top: 0
+        margin-bottom: 0
+        font-weight: 200
+        transition: all .3s ease
+        text-decoration: none !important
+        outline: none
+        color: white
+        cursor: pointer
+        &:hover
+            opacity: .6
+        @media (max-width: 460px)
+            display: none
+    &__exit-container-mobile
+        height: 45px
+        @media (min-width: 461px) 
+            display: none
+    &__exit-mobile
+        width: 45px
+        height: 45px
+        background-color: white
+        border-radius: 10px
+        margin-bottom: 10px

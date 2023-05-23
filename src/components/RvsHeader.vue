@@ -10,8 +10,11 @@
         <div class="header__button-container" v-if="this.isLoggedIn && !this.showLogOutButton">
             <RouterLink to="/users/me" class="header__link">Личный кабинет</RouterLink>
         </div>
-        <div class="header__button-container" v-if="this.showLogOutButton">
-            <p @click="logOut()" class="header__link">Выйти из аккаунта</p>
+        <div class="header__button-container header__exit-container" v-if="this.showLogOutButton">
+            <p @click="logOut()" class="header__exit">Выйти из аккаунта</p>
+        </div>
+        <div class="header__exit-container-mobile" v-if="this.showLogOutButton">
+            <img src="../assets/img/exit.svg" @click="logOut()" class="header__exit-mobile"/>
         </div>
     </div>
 </template>

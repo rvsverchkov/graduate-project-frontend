@@ -11,14 +11,16 @@
             </div>
         </div>
         <div class="courses__elements">
-            <div class="courses__element" :class="[courseOffice.userValue === 0 ? 'courses__element-hide': true]">
-                <div class="courses__link">
+            <div class="me__element" :class="[courseOffice.userValue === 0 ? 'courses__element-hide': true]">
+                <div class="me__element-info">
                     <p class="courses__element-title">Как вести себя в офисе</p>
                     <div class="courses__element-timebox">
                         <img class="courses__element-svg" src="../assets/img/time.svg">
                         <p class="courses__element-time">25 минут</p>
                     </div>
-                    <div v-if="courseOffice.userValue !== 0" class="courses__result">
+                </div>
+                <div class="me__progress">
+                    <div v-if="courseOffice.userValue !== 0" class="me__result">
                         <p>{{ courseOffice.userValue }}/{{ courseOffice.resultValue }}</p>
                         <div class="courses__result-bar">
                             <div class="courses__result-value" :style="{'width': `${courseOffice.percent}`}"></div>
@@ -26,14 +28,16 @@
                     </div>
                 </div>
             </div>
-            <div class="courses__element" :class="[courseEmail.userValue === 0 ? 'courses__element-hide': true]">
-                <div class="courses__link">
+            <div class="me__element" :class="[courseEmail.userValue === 0 ? 'courses__element-hide': true]">
+                <div class="me__element-info">
                     <p class="courses__element-title">Все, что нужно знать о корпоративной почте</p>
                     <div class="courses__element-timebox">
                         <img class="courses__element-svg" src="../assets/img/time.svg">
                         <p class="courses__element-time">30 минут</p>
                     </div>
-                    <div v-if="courseEmail.userValue !== 0" class="courses__result">
+                </div>
+                <div class="me__progress">
+                    <div v-if="courseEmail.userValue !== 0" class="me__result">
                         <p>{{ courseEmail.userValue }}/{{ courseEmail.resultValue }}</p>
                         <div class="courses__result-bar">
                             <div class="courses__result-value" :style="{'width': `${courseEmail.percent}`}"></div>
@@ -41,14 +45,16 @@
                     </div>
                 </div>
             </div>
-            <div class="courses__element" :class="[coursePhishing.userValue === 0 ? 'courses__element-hide': true]">
-                <div class="courses__link">
+            <div class="me__element" :class="[coursePhishing.userValue === 0 ? 'courses__element-hide': true]">
+                <div class="me__element-info">
                     <p class="courses__element-title">Как не стать жертвой фишинга</p>
                     <div class="courses__element-timebox">
                         <img class="courses__element-svg" src="../assets/img/time.svg">
                         <p class="courses__element-time">45 минут</p>
                     </div>
-                    <div v-if="courseOffice.userValue !== 0" class="courses__result">
+                </div>
+                <div class="me__progress">
+                    <div v-if="coursePhishing.userValue !== 0" class="courses__result">
                         <p>{{ coursePhishing.userValue }}/{{ coursePhishing.resultValue }}</p>
                         <div class="courses__result-bar">
                             <div class="courses__result-value" :style="{'width': `${coursePhishing.percent}`}"></div>
@@ -85,7 +91,7 @@ export default {
         }
     },
     mounted() {
-        axios.get("http://localhost:3000/users/me", { headers: authHeader() })
+        axios.get("https://rvsverchkov-backend.ru/users/me", { headers: authHeader() })
             .then(response => {
                 let percent;
                 this.userName = response.data.name;
