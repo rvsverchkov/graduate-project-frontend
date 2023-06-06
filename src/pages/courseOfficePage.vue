@@ -74,7 +74,7 @@ export default {
     methods: {
         showTests() {
             this.showTheory = false
-            axios.get("https://rvsverchkov-backend.ru/tests/office", { headers: authHeader() })
+            axios.get("http://localhost:3000/tests/office", { headers: authHeader() })
                 .then(response => {
                     this.questionsArray = response.data[0].questions
                     this.quantityOfAnswers = this.questionsArray.length
@@ -94,7 +94,7 @@ export default {
             for (let i = 0; i < this.answersArray.length; i++) {
                 this.result.push(this.answersArray[i].answer);
             }
-            axios.get("https://rvsverchkov-backend.ru/answers/office", { headers: authHeader() })
+            axios.get("http://localhost:3000/answers/office", { headers: authHeader() })
                 .then(response => {
                     this.resultTrust = response.data;
                     for (let i = 0; i < this.result.length; i++) {
@@ -103,7 +103,7 @@ export default {
                         }
                     }
                     this.showResults = true;
-                    axios.patch("https://rvsverchkov-backend.ru/users/me/office", { userValue: this.quantityOfTrue }, {
+                    axios.patch("http://localhost:3000/users/me/office", { userValue: this.quantityOfTrue }, {
                         headers: authHeader()
                     })
                     .then(response => {

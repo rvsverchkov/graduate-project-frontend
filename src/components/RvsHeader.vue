@@ -1,6 +1,8 @@
 <template>
     <div class="header">
-        <RouterLink to="/" class="header__title">RVStudy</RouterLink>
+        <div>
+            <RouterLink to="/" class="header__title">RVStudy</RouterLink>
+        </div>
         <div class="header__button-container" v-if="this.showSignUpButton && !this.isLoggedIn">
             <RouterLink to="/signup" class="header__link">Регистрация</RouterLink>
         </div>
